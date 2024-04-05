@@ -77,8 +77,8 @@ export default function ShoppingCart() {
                         <div key={item.id} className="box">
                             <i
                                 className="fas fa-trash"
-                                onClick={() => {
-                                    handleDeleteCartItem(item.product_id);
+                                onClick={async () => {
+                                    await handleDeleteCartItem(item.product_id);
                                 }}
                             ></i>
                             <img src={product.image} alt={product.title} />

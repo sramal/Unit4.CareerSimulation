@@ -78,8 +78,8 @@ export default function Login() {
                     <form
                         action=""
                         className="login-form"
-                        onSubmit={(e) =>
-                            handleLogin(
+                        onSubmit={async (e) =>
+                            await handleLogin(
                                 e,
                                 username,
                                 setUsername,
@@ -101,11 +101,13 @@ export default function Login() {
                             placeholder="user name"
                             className="box"
                             name="username"
+                            id="login-username"
                             value={username}
                             onChange={(e) => {
                                 setUsername(e.target.value);
                             }}
                             required
+                            autoFocus
                         />
                         <input
                             type="password"

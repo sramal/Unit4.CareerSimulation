@@ -1,44 +1,22 @@
-import { context } from "./Utils";
+import { useContext } from "react";
+import { context, toggleForm } from "./Utils";
 
 export default function LoginIcon() {
-    const handleLoginIconClick = (e, setLoginMessage) => {
-        setLoginMessage({});
-
-        let registerForm = document.querySelector(".register-form");
-        registerForm && registerForm.classList.remove("active");
-
-        let shoppingCart = document.querySelector(".shopping-cart");
-        shoppingCart && shoppingCart.classList.remove("active");
-
-        let searchForm = document.querySelector(".search-form");
-        searchForm && searchForm.classList.remove("active");
-
-        let menu = document.querySelector(".navbar");
-        menu && menu.classList.remove("active");
-
-        let loginForm = document.querySelector(".login-form");
-        loginForm && loginForm.classList.toggle("active");
-
-        let addCategoryForm = document.querySelector(".add-category-form");
-        addCategoryForm && addCategoryForm.classList.remove("active");
-
-        let addProductForm = document.querySelector(".add-product-form");
-        addProductForm && addProductForm.classList.remove("active");
-    };
+    const localContext = useContext(context);
+    const setUsername = localContext.setUsername;
+    const setPassword = localContext.setPassword;
+    const setLoginMessage = localContext.setLoginMessage;
 
     return (
-        <context.Consumer>
-            {({ setLoginMessage }) => {
-                return (
-                    <div
-                        className="fas fa-sign-in"
-                        id="login-btn"
-                        onClick={(e) =>
-                            handleLoginIconClick(e, setLoginMessage)
-                        }
-                    ></div>
-                );
+        <div
+            className="fas fa-sign-in"
+            id="login-btn"
+            onClick={() => {
+                setUsername("");
+                setPassword("");
+                setLoginMessage({});
+                toggleForm(".login-form");
             }}
-        </context.Consumer>
+        ></div>
     );
 }

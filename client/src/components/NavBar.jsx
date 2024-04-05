@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { context } from "./Utils";
+import { context, toggleForm } from "./Utils";
 
 export default function NavBar() {
     const localContext = useContext(context);
@@ -8,61 +8,36 @@ export default function NavBar() {
     const setCategoryMessage = localContext.setCategoryMessage;
     const setProductMessage = localContext.setProductMessage;
 
+    const handleProductsClick = (setCategoryStr) => {
+        setCategoryStr("Products");
+
+        toggleForm("");
+    };
+
     const handleAddCategoryClick = (setCategoryMessage) => {
         setCategoryMessage({});
 
-        let registerForm = document.querySelector(".register-form");
-        registerForm && registerForm.classList.remove("active");
-
-        let shoppingCart = document.querySelector(".shopping-cart");
-        shoppingCart && shoppingCart.classList.remove("active");
-
-        let searchForm = document.querySelector(".search-form");
-        searchForm && searchForm.classList.remove("active");
-
-        let menu = document.querySelector(".navbar");
-        menu && menu.classList.remove("active");
-
-        let loginForm = document.querySelector(".login-form");
-        loginForm && loginForm.classList.remove("active");
-
-        let addCategoryForm = document.querySelector(".add-category-form");
-        addCategoryForm && addCategoryForm.classList.toggle("active");
-
-        let addProductForm = document.querySelector(".add-product-form");
-        addProductForm && addProductForm.classList.remove("active");
+        toggleForm(".add-category-form");
     };
 
     const handleAddProductClick = (setProductMessage) => {
         setProductMessage({});
 
-        let registerForm = document.querySelector(".register-form");
-        registerForm && registerForm.classList.remove("active");
-
-        let shoppingCart = document.querySelector(".shopping-cart");
-        shoppingCart && shoppingCart.classList.remove("active");
-
-        let searchForm = document.querySelector(".search-form");
-        searchForm && searchForm.classList.remove("active");
-
-        let menu = document.querySelector(".navbar");
-        menu && menu.classList.remove("active");
-
-        let loginForm = document.querySelector(".login-form");
-        loginForm && loginForm.classList.remove("active");
-
-        let addCategoryForm = document.querySelector(".add-category-form");
-        addCategoryForm && addCategoryForm.classList.remove("active");
-
-        let addProductForm = document.querySelector(".add-product-form");
-        addProductForm && addProductForm.classList.toggle("active");
+        toggleForm(".add-product-form");
     };
 
     return (
         <nav className="navbar">
-            <a href="#home">Home</a>
-            <a href="#categories">Categories</a>
-            <a href="#products" onClick={() => setCategoryStr("Products")}>
+            <a href="#home" onClick={() => toggleForm("")}>
+                Home
+            </a>
+            <a href="#categories" onClick={() => toggleForm("")}>
+                Categories
+            </a>
+            <a
+                href="#products"
+                onClick={() => handleProductsClick(setCategoryStr)}
+            >
                 Products
             </a>
             {isadmin && (
@@ -70,7 +45,7 @@ export default function NavBar() {
                     href="#categories"
                     onClick={() => handleAddCategoryClick(setCategoryMessage)}
                 >
-                    Category+
+                    Category<sup>+</sup>
                 </a>
             )}
             {isadmin && (
@@ -78,10 +53,9 @@ export default function NavBar() {
                     href="#products"
                     onClick={() => handleAddProductClick(setProductMessage)}
                 >
-                    Product+
+                    Product<sup>+</sup>
                 </a>
             )}
-            <a href="#">Contact Us</a>
         </nav>
     );
 }

@@ -68,8 +68,8 @@ export default function Categories() {
                                     <a
                                         href="#categories"
                                         className="btn"
-                                        onClick={() =>
-                                            handleDeleteCategory(item.id)
+                                        onClick={async () =>
+                                            await handleDeleteCategory(item.id)
                                         }
                                     >
                                         Delete

@@ -35,7 +35,7 @@ export default function AddCategory() {
                     text: "Category added successfully!",
                     id: "",
                 });
-                fetchCategories(setCategories);
+                await fetchCategories(setCategories);
             } else {
                 setCategoryMessage({
                     success: false,
@@ -60,7 +60,7 @@ export default function AddCategory() {
         <form
             action=""
             className="add-category-form"
-            onSubmit={(e) => handleAddCategory(e)}
+            onSubmit={async (e) => await handleAddCategory(e)}
         >
             <h3>New Category</h3>
             <input
@@ -68,6 +68,7 @@ export default function AddCategory() {
                 placeholder="category name"
                 className="box"
                 name="categoryName"
+                id="category-name"
                 value={categoryName}
                 onChange={(e) => {
                     setCategoryName(e.target.value);

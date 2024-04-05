@@ -41,3 +41,55 @@ export const fetchCategories = async (setCategories) => {
         console.error("Uh oh, trouble fetching categories!", error);
     }
 };
+
+export const toggleForm = (name) => {
+    if (name) {
+        const formHandle = document.querySelector(name);
+        formHandle && formHandle.classList.toggle("active");
+    }
+
+    const registerForm = document.querySelector(".register-form");
+    if (name !== ".register-form") {
+        registerForm && registerForm.classList.remove("active");
+    } else {
+        registerForm && document.getElementById("register-username").focus();
+    }
+
+    const loginForm = document.querySelector(".login-form");
+    if (name !== ".login-form") {
+        loginForm && loginForm.classList.remove("active");
+    } else {
+        loginForm && document.getElementById("login-username").focus();
+    }
+
+    if (name !== ".shopping-cart") {
+        const shoppingCart = document.querySelector(".shopping-cart");
+        shoppingCart && shoppingCart.classList.remove("active");
+    }
+
+    const searchForm = document.querySelector(".search-form");
+    if (name !== ".search-form") {
+        searchForm && searchForm.classList.remove("active");
+    } else {
+        searchForm && document.getElementById("search-box").focus();
+    }
+
+    const menu = document.querySelector(".navbar");
+    if (name !== ".navbar") {
+        menu && menu.classList.remove("active");
+    }
+
+    const addCategoryForm = document.querySelector(".add-category-form");
+    if (name !== ".add-category-form") {
+        addCategoryForm && addCategoryForm.classList.remove("active");
+    } else {
+        addCategoryForm && document.getElementById("category-name").focus();
+    }
+
+    const addProductForm = document.querySelector(".add-product-form");
+    if (name !== ".add-product-form") {
+        addProductForm && addProductForm.classList.remove("active");
+    } else {
+        addProductForm && document.getElementById("product-title").focus();
+    }
+};

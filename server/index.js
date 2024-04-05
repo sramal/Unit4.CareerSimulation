@@ -33,10 +33,10 @@ const init = async () => {
             createUser({ username: "moe", password: "m_pw", isAdmin: false }),
         ]);
 
-        console.log(await fetchUsers());
-        console.log(await fetchProducts());
-        console.log(await fetchCarts());
-        console.log(await fetchCategories());
+        // console.log(await fetchUsers());
+        // console.log(await fetchProducts());
+        // console.log(await fetchCarts());
+        // console.log(await fetchCategories());
 
         app.listen(PORT, () => {
             console.log(`Server started and listening on ${PORT}`);

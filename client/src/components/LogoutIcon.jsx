@@ -1,51 +1,27 @@
-import { context } from "./Utils";
+import { useContext } from "react";
+import { context, toggleForm } from "./Utils";
 
 export default function LogoutIcon() {
-    const handleLogoutIconClick = (e, setLogin, setIsadmin, setToken) => {
+    const localContext = useContext(context);
+    const setLogin = localContext.setLogin;
+    const setIsadmin = localContext.setIsadmin;
+    const setToken = localContext.setToken;
+
+    const handleLogoutIconClick = (setLogin, setIsadmin, setToken) => {
         setLogin(false);
         setIsadmin(false);
         setToken("");
 
-        let registerForm = document.querySelector(".register-form");
-        registerForm && registerForm.classList.remove("active");
-
-        let shoppingCart = document.querySelector(".shopping-cart");
-        shoppingCart && shoppingCart.classList.remove("active");
-
-        let searchForm = document.querySelector(".search-form");
-        searchForm && searchForm.classList.remove("active");
-
-        let menu = document.querySelector(".navbar");
-        menu && menu.classList.remove("active");
-
-        let loginForm = document.querySelector(".login-form");
-        loginForm && loginForm.classList.remove("active");
-
-        let addCategoryForm = document.querySelector(".add-category-form");
-        addCategoryForm && addCategoryForm.classList.remove("active");
-
-        let addProductForm = document.querySelector(".add-product-form");
-        addProductForm && addProductForm.classList.remove("active");
+        toggleForm("");
     };
 
     return (
-        <context.Consumer>
-            {({ setLogin, setIsadmin, setToken }) => {
-                return (
-                    <div
-                        className="fas fa-sign-out"
-                        id="logout-btn"
-                        onClick={(e) =>
-                            handleLogoutIconClick(
-                                e,
-                                setLogin,
-                                setIsadmin,
-                                setToken
-                            )
-                        }
-                    ></div>
-                );
-            }}
-        </context.Consumer>
+        <div
+            className="fas fa-sign-out"
+            id="logout-btn"
+            onClick={() =>
+                handleLogoutIconClick(setLogin, setIsadmin, setToken)
+            }
+        ></div>
     );
 }

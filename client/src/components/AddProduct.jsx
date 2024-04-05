@@ -39,7 +39,7 @@ export default function AddProduct() {
                     text: "Product added successfully!",
                     id: "",
                 });
-                fetchProducts(setProducts);
+                await fetchProducts(setProducts);
             } else {
                 setProductMessage({
                     success: false,
@@ -73,6 +73,7 @@ export default function AddProduct() {
                 placeholder="product name"
                 className="box"
                 name="productTitle"
+                id="product-title"
                 value={productTitle}
                 onChange={(e) => {
                     setProductTitle(e.target.value);

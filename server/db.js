@@ -192,7 +192,7 @@ const createCategory = async ({ name, text, image }) => {
 
 const createCategories = async (categories) => {
     for (let i = 0; i < categories.length; i++) {
-        console.log(await createCategory(categories[i]));
+        await createCategory(categories[i]);
     }
 };
 
@@ -236,7 +236,7 @@ const createProduct = async (product) => {
 
 const createProducts = async (products) => {
     for (let i = 0; i < products.length; i++) {
-        console.log(await createProduct(products[i]));
+        await createProduct(products[i]);
     }
 };
 

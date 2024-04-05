@@ -117,8 +117,8 @@ export default function Products() {
                                 {login && !isadmin && item.quantity > 0 && (
                                     <a
                                         className="btn"
-                                        onClick={() => {
-                                            handleAddToCart(item.id);
+                                        onClick={async () => {
+                                            await handleAddToCart(item.id);
                                         }}
                                     >
                                         Add To Cart
@@ -128,8 +128,8 @@ export default function Products() {
                                     <a
                                         href="#products"
                                         className="btn"
-                                        onClick={() =>
-                                            handleDeleteProduct(item.id)
+                                        onClick={async () =>
+                                            await handleDeleteProduct(item.id)
                                         }
                                     >
                                         Delete

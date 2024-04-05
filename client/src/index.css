@@ -271,11 +271,6 @@ section {
     color: var(--light-color);
 }
 
-/* .header .login-form p a {
-    color: var(--orange);
-    text-decoration: underline;
-} */
-
 .header .register-form {
     position: absolute;
     top: 110%;

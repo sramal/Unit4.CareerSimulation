@@ -18,6 +18,7 @@ export default function Search() {
                     onChange={(e) => {
                         setSearchStr(e.target.value);
                     }}
+                    autoFocus
                 />
                 <label htmlFor="search-box" className="fas fa-search"></label>
             </form>
