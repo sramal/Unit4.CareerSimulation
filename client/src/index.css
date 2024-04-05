@@ -315,6 +315,84 @@ section {
     color: var(--light-color);
 }
 
+.header .add-category-form {
+    position: absolute;
+    top: 110%;
+    right: -110%;
+    width: 50rem;
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background: #fff;
+    text-align: center;
+}
+
+.header .add-category-form.active {
+    right: 2rem;
+    transition: 0.4s linear;
+}
+
+.header .add-category-form h3 {
+    font-size: 2.5rem;
+    color: --var(--black);
+}
+
+.header .add-category-form .box {
+    width: 100%;
+    margin: 0.7rem 0;
+    background: #eee;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+}
+
+.header .add-category-form p {
+    font-size: 1.4rem;
+    padding: 0.5rem 0;
+    color: var(--light-color);
+}
+
+.header .add-product-form {
+    position: absolute;
+    top: 110%;
+    right: -110%;
+    width: 50rem;
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background: #fff;
+    text-align: center;
+}
+
+.header .add-product-form.active {
+    right: 2rem;
+    transition: 0.4s linear;
+}
+
+.header .add-product-form h3 {
+    font-size: 2.5rem;
+    color: --var(--black);
+}
+
+.header .add-product-form .box {
+    width: 100%;
+    margin: 0.7rem 0;
+    background: #eee;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+}
+
+.header .add-product-form p {
+    font-size: 1.4rem;
+    padding: 0.5rem 0;
+    color: var(--light-color);
+}
+
 /* .header .register-form p a {
     color: var(--orange);
     text-decoration: underline;

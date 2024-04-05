@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 
-import { context, API_URL, fetchProducts } from "./components/Utils";
+import { context, fetchProducts, fetchCategories } from "./components/Utils";
 
 function App() {
     const [username, setUsername] = useState("");
@@ -18,19 +18,11 @@ function App() {
     const [products, setProducts] = useState([]);
     const [searchStr, setSearchStr] = useState("");
     const [categoryStr, setCategoryStr] = useState("Products");
+    const [categoryMessage, setCategoryMessage] = useState({});
+    const [productMessage, setProductMessage] = useState({});
 
     useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const response = await fetch(API_URL + "/api/categories");
-                const json = await response.json();
-                setCategories(json.categories);
-            } catch (error) {
-                console.error("Uh oh, trouble fetching categories!", error);
-            }
-        };
-
-        fetchCategories();
+        fetchCategories(setCategories);
         fetchProducts(setProducts);
     }, []);
 
@@ -63,6 +55,10 @@ function App() {
                 setSearchStr,
                 categoryStr,
                 setCategoryStr,
+                categoryMessage,
+                setCategoryMessage,
+                productMessage,
+                setProductMessage,
             }}
         >
             <Routes>

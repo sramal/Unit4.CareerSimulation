@@ -20,6 +20,12 @@ export default function LogoutIcon() {
 
         let loginForm = document.querySelector(".login-form");
         loginForm && loginForm.classList.remove("active");
+
+        let addCategoryForm = document.querySelector(".add-category-form");
+        addCategoryForm && addCategoryForm.classList.remove("active");
+
+        let addProductForm = document.querySelector(".add-product-form");
+        addProductForm && addProductForm.classList.remove("active");
     };
 
     return (

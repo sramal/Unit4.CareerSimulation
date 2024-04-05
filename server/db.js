@@ -141,7 +141,7 @@ const authenticate = async ({ username, password }) => {
 const findUserWithToken = async (token) => {
     const payload = jwt.verify(token, JWT);
     const SQL = `
-    SELECT id, username FROM users WHERE id = $1;
+    SELECT id, username, isAdmin FROM users WHERE id = $1;
   `;
     const response = await client.query(SQL, [payload.id]);
     if (!response.rows.length) {

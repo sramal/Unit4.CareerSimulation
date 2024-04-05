@@ -122,7 +122,7 @@ module.exports = (app) => {
 
     app.post("/api/categories", async (req, res, next) => {
         try {
-            res.status(201).send(await createCategory(req.body.name));
+            res.status(201).send(await createCategory(req.body));
         } catch (error) {
             next(error);
         }
@@ -130,8 +130,13 @@ module.exports = (app) => {
 
     app.delete("/api/categories/:id", async (req, res, next) => {
         try {
-            await deleteCategory(req.params.id);
-            res.sendStatus(204);
+            const user = await findUserWithToken(req.headers.authorization);
+            if (user.isadmin) {
+                await deleteCategory(req.params.id);
+                res.sendStatus(204);
+            } else {
+                res.sendStatus(401);
+            }
         } catch (error) {
             next(error);
         }
@@ -157,8 +162,13 @@ module.exports = (app) => {
 
     app.delete("/api/products/:id", async (req, res, next) => {
         try {
-            await deleteProduct(req.params.id);
-            res.sendStatus(204);
+            const user = await findUserWithToken(req.headers.authorization);
+            if (user.isadmin) {
+                await deleteProduct(req.params.id);
+                res.sendStatus(204);
+            } else {
+                res.sendStatus(401);
+            }
         } catch (error) {
             next(error);
         }

@@ -16,6 +16,12 @@ export default function ShoppingCartIcon() {
 
         let shoppingCart = document.querySelector(".shopping-cart");
         shoppingCart && shoppingCart.classList.toggle("active");
+
+        let addCategoryForm = document.querySelector(".add-category-form");
+        addCategoryForm && addCategoryForm.classList.remove("active");
+
+        let addProductForm = document.querySelector(".add-product-form");
+        addProductForm && addProductForm.classList.remove("active");
     };
 
     return (

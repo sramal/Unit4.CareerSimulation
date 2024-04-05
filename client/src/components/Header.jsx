@@ -6,11 +6,13 @@ import ShoppingCart from "./ShoppingCart";
 import Logo from "./Logo";
 import Login from "./Login";
 import Register from "./Register";
+import AddCategory from "./AddCategory";
+import AddProduct from "./AddProduct";
 
 export default function Header() {
     return (
         <context.Consumer>
-            {({ login, shoppingCart, products }) => {
+            {({ login, isadmin, shoppingCart, products }) => {
                 return (
                     <header className="header">
                         <Logo />
@@ -25,6 +27,8 @@ export default function Header() {
                         )}
                         <Login />
                         <Register />
+                        {isadmin && <AddCategory />}
+                        {isadmin && <AddProduct />}
                     </header>
                 );
             }}

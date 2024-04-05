@@ -31,3 +31,13 @@ export const fetchShoppingCartItems = async (
         console.error("Uh oh, trouble fetching shopping cart items!", error);
     }
 };
+
+export const fetchCategories = async (setCategories) => {
+    try {
+        const response = await fetch(API_URL + "/api/categories");
+        const json = await response.json();
+        setCategories(json.categories);
+    } catch (error) {
+        console.error("Uh oh, trouble fetching categories!", error);
+    }
+};

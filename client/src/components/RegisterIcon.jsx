@@ -18,6 +18,12 @@ export default function RegisterIcon() {
 
         let registerForm = document.querySelector(".register-form");
         registerForm.classList.toggle("active");
+
+        let addCategoryForm = document.querySelector(".add-category-form");
+        addCategoryForm && addCategoryForm.classList.remove("active");
+
+        let addProductForm = document.querySelector(".add-product-form");
+        addProductForm && addProductForm.classList.remove("active");
     };
 
     return (

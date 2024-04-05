@@ -14,6 +14,7 @@ const {
     fetchUsers,
     fetchProducts,
     fetchCarts,
+    fetchCategories,
 } = require("./db.js");
 
 require("./routes.js")(app);
@@ -35,6 +36,7 @@ const init = async () => {
         console.log(await fetchUsers());
         console.log(await fetchProducts());
         console.log(await fetchCarts());
+        console.log(await fetchCategories());
 
         app.listen(PORT, () => {
             console.log(`Server started and listening on ${PORT}`);

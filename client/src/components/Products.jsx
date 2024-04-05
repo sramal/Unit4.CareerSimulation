@@ -17,6 +17,9 @@ export default function Products() {
     const setShoppingCart = localContext.setShoppingCart;
     const token = localContext.token;
     const login = localContext.login;
+    const isadmin = localContext.isadmin;
+    const productMessage = localContext.productMessage;
+    const setProductMessage = localContext.setProductMessage;
 
     if (searchStr !== "") {
         products = products.filter(
@@ -54,6 +57,34 @@ export default function Products() {
         }
     };
 
+    const handleDeleteProduct = async (id) => {
+        try {
+            const response = await fetch(API_URL + `/api/products/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `${token}`,
+                },
+            });
+
+            if (response.ok) {
+                fetchProducts(setProducts);
+            } else {
+                setProductMessage({
+                    success: false,
+                    text: "Delete failed!",
+                    id: id,
+                });
+            }
+        } catch (error) {
+            setProductMessage({
+                success: false,
+                text: "Delete failed!",
+                id: id,
+            });
+        }
+    };
+
     return (
         <section className="products" id="products">
             <h1 className="heading">
@@ -83,16 +114,31 @@ export default function Products() {
                                         In of Stock({item.quantity})
                                     </div>
                                 )}
-                                {login && item.quantity > 0 && (
+                                {login && !isadmin && item.quantity > 0 && (
                                     <a
                                         className="btn"
-                                        onClick={(e) => {
+                                        onClick={() => {
                                             handleAddToCart(item.id);
                                         }}
                                     >
                                         Add To Cart
                                     </a>
                                 )}
+                                {isadmin && (
+                                    <a
+                                        href="#products"
+                                        className="btn"
+                                        onClick={() =>
+                                            handleDeleteProduct(item.id)
+                                        }
+                                    >
+                                        Delete
+                                    </a>
+                                )}
+                                {productMessage.text !== "" &&
+                                    productMessage.id === item.id && (
+                                        <p>{productMessage.text}</p>
+                                    )}
                             </div>
                         );
                     })}
