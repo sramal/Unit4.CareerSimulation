@@ -317,7 +317,7 @@ const addProductToCart = async (cart_id, product_id, quantity) => {
         response = await updateCartItemQuantity(
             cart_id,
             product_id,
-            currentQuantity + quantity
+            parseInt(currentQuantity) + parseInt(quantity)
         );
 
         await addToProductQuantity(product_id, -quantity);

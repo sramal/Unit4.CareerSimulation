@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+// import { Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 
 import { context, fetchProducts, fetchCategories } from "./components/Utils";
@@ -16,6 +16,7 @@ function App() {
     const [shoppingCartId, setShoppingCartId] = useState([]);
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
+    const [addQuantity, setAddQuantity] = useState([]);
     const [searchStr, setSearchStr] = useState("");
     const [categoryStr, setCategoryStr] = useState("Products");
     const [categoryMessage, setCategoryMessage] = useState({});
@@ -59,11 +60,14 @@ function App() {
                 setCategoryMessage,
                 productMessage,
                 setProductMessage,
+                addQuantity,
+                setAddQuantity,
             }}
         >
-            <Routes>
+            {/* <Routes>
                 <Route path="/" element={<LandingPage />}></Route>
-            </Routes>
+            </Routes> */}
+            <LandingPage />
         </context.Provider>
     );
 }

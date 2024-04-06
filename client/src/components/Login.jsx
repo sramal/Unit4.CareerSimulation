@@ -1,4 +1,10 @@
-import { context, API_URL } from "./Utils";
+import {
+    context,
+    API_URL,
+    fetchProducts,
+    fetchCategories,
+    toggleForm,
+} from "./Utils";
 
 export default function Login() {
     async function handleLogin(
@@ -13,9 +19,32 @@ export default function Login() {
         setIsadmin,
         setLoginMessage,
         setShoppingCartId,
-        setShoppingCart
+        setShoppingCart,
+        setCategories,
+        products,
+        setProducts,
+        addQuantity,
+        setAddQuantity,
+        setRegisterMessage,
+        setCategoryMessage,
+        setProductMessage,
+        setSearchStr,
+        setCategoryStr
     ) {
         e.preventDefault();
+
+        const intializeAddQuantity = (
+            products,
+            addQuantity,
+            setAddQuantity
+        ) => {
+            const arr = [];
+            products.forEach((x) => {
+                arr.push({ quantity: 1, id: x.id });
+            });
+
+            setAddQuantity(arr);
+        };
 
         try {
             const user = { username: username, password: password };
@@ -43,9 +72,18 @@ export default function Login() {
                     success: true,
                     text: "Login successfull!",
                 });
+                setRegisterMessage({});
+                setCategoryMessage({});
+                setProductMessage({});
+                setSearchStr("");
+                setCategoryStr("Products");
+                fetchProducts(setProducts);
+                fetchCategories(setCategories);
+                if (products.length > 0) {
+                    intializeAddQuantity(products, addQuantity, setAddQuantity);
+                }
 
-                let loginForm = document.querySelector(".login-form");
-                loginForm.classList.remove("active");
+                toggleForm("");
             }
         } catch (error) {
             setLoginMessage({
@@ -73,6 +111,16 @@ export default function Login() {
                 setLoginMessage,
                 setShoppingCartId,
                 setShoppingCart,
+                setCategories,
+                products,
+                setProducts,
+                addQuantity,
+                setAddQuantity,
+                setRegisterMessage,
+                setCategoryMessage,
+                setProductMessage,
+                setSearchStr,
+                setCategoryStr,
             }) => {
                 return (
                     <form
@@ -91,7 +139,17 @@ export default function Login() {
                                 setIsadmin,
                                 setLoginMessage,
                                 setShoppingCartId,
-                                setShoppingCart
+                                setShoppingCart,
+                                setCategories,
+                                products,
+                                setProducts,
+                                addQuantity,
+                                setAddQuantity,
+                                setRegisterMessage,
+                                setCategoryMessage,
+                                setProductMessage,
+                                setSearchStr,
+                                setCategoryStr
                             )
                         }
                     >

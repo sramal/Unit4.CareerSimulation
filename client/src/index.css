@@ -503,23 +503,28 @@ section {
     padding: 0.5rem 0;
 }
 
-.products .box-container .box .stars i {
+.products .box-container .box .add-quantity {
+    width: 6rem;
+    background: #eee;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
     font-size: 1.5rem;
-    color: var(--orange);
-    padding: 0.5rem 0;
+    color: var(--black);
+    text-transform: none;
+    text-align: center;
 }
 
 /* media queries */
 
-@media (max-width: 1199.98px) {
+/* @media (max-width: 1199.98px) {
     html {
-        font-size: 50%;
+        font-size: 60%;
     }
-}
+} */
 
 @media (max-width: 991.98px) {
     html {
-        font-size: 45%;
+        font-size: 60%;
     }
 
     .header {
@@ -533,7 +538,7 @@ section {
 
 @media (max-width: 767.98px) {
     html {
-        font-size: 45%;
+        font-size: 55%;
     }
 
     #menu-btn {
@@ -568,7 +573,7 @@ section {
 
 @media (max-width: 575.98px) {
     html {
-        font-size: 40%;
+        font-size: 50%;
     }
 
     .heading {
@@ -578,12 +583,12 @@ section {
 
 @media (max-width: 450px) {
     html {
-        font-size: 35%;
+        font-size: 45%;
     }
 }
 
 @media (max-width: 350px) {
     html {
-        font-size: 30%;
+        font-size: 40%;
     }
 }
